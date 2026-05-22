@@ -1,15 +1,15 @@
 package powerups;
 
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
+import static utils.RaylibRenderer.*; 
 
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import com.raylib.Raylib.Color; // Raylib color struct
-import utils.RaylibRenderer; // Rendering utilities
-import entities.Player; // Player character
+import static com.raylib.Raylib.*; 
+import com.raylib.Raylib.Color; 
+import utils.RaylibRenderer; 
+import entities.Player; 
 
-/**
- * Damage boost - increases attack damage temporarily
- */
+
+
+
 public class DamageBoost extends PowerUp {
 
     public DamageBoost(double x, double y) {
@@ -18,7 +18,7 @@ public class DamageBoost extends PowerUp {
 
     @Override
     public void apply(Player player) {
-        player.applyDamageBoost(6000); // 6 seconds
+        player.applyDamageBoost(6000); 
     }
 
     @Override
@@ -26,24 +26,24 @@ public class DamageBoost extends PowerUp {
         int px = (int) x;
         int py = (int) (y + floatOffset);
 
-        // Glow for the damage icon
+        
         renderGlow(new int[] { 255, 150, 50 });
 
-        // Sword icon
-        // Blade
+        
+        
         DrawRectangle(px + 13, py + 2, 4, 20, color(200, 200, 210, 255));
-        // Tip
+        
         int[] tipX = { px + 13, px + 15, px + 17 };
         int[] tipY = { py + 2, py - 3, py + 2 };
         fillPolygon(tipX, tipY, 3, color(200, 200, 210, 255));
 
-        // Guard
+        
         DrawRectangle(px + 8, py + 20, 14, 4, color(180, 140, 50, 255));
 
-        // Handle
+        
         DrawRectangle(px + 12, py + 23, 6, 8, color(80, 50, 30, 255));
 
-        // Fire effect around sword
+        
         fillOval(px + 5, py + 5, 8, 12, color(255, 100, 0, 150));
         fillOval(px + 17, py + 5, 8, 12, color(255, 100, 0, 150));
 

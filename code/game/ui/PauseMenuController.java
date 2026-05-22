@@ -1,14 +1,14 @@
 package game.ui;
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import input.InputHandler; // Keyboard input handling
-import input.MouseHandler; // Mouse input handling
-import audio.SoundManager; // Audio playback
-import utils.Constants; // Global game constants
+import static com.raylib.Raylib.*; 
+import input.InputHandler; 
+import input.MouseHandler; 
+import audio.SoundManager; 
+import utils.Constants; 
 
-/**
- * Handles pause menu update logic.
- * Returns actions for GameEngine to execute.
- */
+
+
+
+
 public class PauseMenuController {
     
     public enum PauseAction { NONE, RESUME, MAIN_MENU, EXIT }
@@ -34,7 +34,7 @@ public class PauseMenuController {
         int spacing = 54;
         int cardX = (screenW - cardW) / 2;
         
-        // Mouse hover detection for pause menu cards
+        
         double mx = mouse.getX();
         double my = mouse.getY();
         for (int i = 0; i < 3; i++) {
@@ -49,7 +49,7 @@ public class PauseMenuController {
             }
         }
         
-        // Mouse click selection
+        
         if (mouse.isLeftJustClicked()) {
             for (int i = 0; i < 3; i++) {
                 int cardY = startY + i * spacing;
@@ -60,7 +60,7 @@ public class PauseMenuController {
             }
         }
         
-        // Keyboard navigation (3 options: Resume, Menu, Exit)
+        
         if (input.isKeyJustPressed(KEY_W) ||
             input.isKeyJustPressed(KEY_UP)) {
             pauseMenuSelection = (pauseMenuSelection - 1 + 3) % 3;
@@ -72,19 +72,19 @@ public class PauseMenuController {
             soundManager.playEffect("menu_select.wav");
         }
         
-        // Animate pause card scales
+        
         for (int i = 0; i < pauseCardScales.length; i++) {
             float target = (i == pauseMenuSelection) ? 1.04f : 1.0f;
             pauseCardScales[i] += (target - pauseCardScales[i]) * 0.15f;
         }
         
-        // Keyboard selection
+        
         if (input.isKeyJustPressed(KEY_ENTER) ||
             input.isKeyJustPressed(KEY_SPACE)) {
             return actionFromIndex(pauseMenuSelection);
         }
         
-        // Unpause with P, exit with ESC
+        
         if (input.isKeyJustPressed(KEY_ESCAPE)) {
             return PauseAction.EXIT;
         }

@@ -1,16 +1,16 @@
 package game.combat;
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
-import java.util.List; // List interface for collections
-import entities.Player; // Player character
-import entities.Enemy; // Base enemy class
-import entities.enemies.Bomber; // Exploding enemy
-import audio.SoundManager; // Audio playback
-import utils.Constants; // Global game constants
-import com.raylib.Raylib.Rectangle; // Raylib rectangle struct
+import static utils.RaylibRenderer.*; 
+import java.util.List; 
+import entities.Player; 
+import entities.Enemy; 
+import entities.enemies.Bomber; 
+import audio.SoundManager; 
+import utils.Constants; 
+import com.raylib.Raylib.Rectangle; 
 
-/**
- * Checks bomber bomb explosions hitting the player.
- */
+
+
+
 public class BomberExplosionSystem {
     
     public void checkBomberExplosions(List<Enemy> enemies, Player player,

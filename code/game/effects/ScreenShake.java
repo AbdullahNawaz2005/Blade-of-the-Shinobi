@@ -1,15 +1,15 @@
 package game.effects;
 
-import java.util.Random; // Random number generator
+import java.util.Random; 
 
-/**
- * Screen shake effect state.
- * When a heavy impact occurs (e.g. boss hit), intensity and duration are set.
- * During render, if duration > 0, the entire coordinate system is translated by
- * a random offset.
- * The offset is recalculated every frame for a chaotic shake, and the duration
- * decrements until 0.
- */
+
+
+
+
+
+
+
+
 public class ScreenShake {
     private int intensity;
     private int duration;

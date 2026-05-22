@@ -1,14 +1,14 @@
 package game.state;
-import java.io.File; // File system operations
-import java.io.FileWriter; // Imports FileWriter functionality
-import java.io.IOException; // Input/output error handling
-import java.io.PrintWriter; // Writing text to files
-import java.util.Scanner; // Imports Scanner functionality
+import java.io.File; 
+import java.io.FileWriter; 
+import java.io.IOException; 
+import java.io.PrintWriter; 
+import java.util.Scanner; 
 
-/**
-  Load high score from file. Returns 0 if file doesn't exist or is invalid.
-  Save high score to file.
- */
+
+
+
+
 public class HighScoreManager {
     private int highScore;
     private static final String HIGH_SCORE_FILE = "E:\\Nust Assignments\\Blade of the shinobi\\highscore.txt";
@@ -19,10 +19,10 @@ public class HighScoreManager {
     
     public int getHighScore() { return highScore; }
     
-    /**
-     * Check if score beats high score, save if so.
-     * @return true if it's a new high score
-     */
+    
+
+
+
     public boolean checkAndSaveHighScore(int score) {
         boolean isNew = (score > highScore);
         if (isNew) {
@@ -36,7 +36,7 @@ public class HighScoreManager {
         try {
             File file = new File(HIGH_SCORE_FILE);
             if (!file.exists()) {
-                // Create file with default value of 0
+                
                 PrintWriter writer = new PrintWriter(file);
                 writer.print(0);
                 writer.close();

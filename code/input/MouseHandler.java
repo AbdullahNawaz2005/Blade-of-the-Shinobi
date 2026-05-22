@@ -1,19 +1,19 @@
 package input;
 
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import utils.Vector2D; // 2D math vector
+import static com.raylib.Raylib.*; 
+import utils.Vector2D; 
 
-/**
- * Handles all mouse input for combat and UI interaction using Raylib polling
- * 
- * Converted from MouseListener to Raylib's IsMouseButtonPressed/GetMousePosition
- */
+
+
+
+
+
 public class MouseHandler {
     
-    // Mouse position
+    
     private Vector2D position;
     
-    // Click tracking for single-press detection
+    
     private boolean leftJustClicked, rightJustClicked, middleJustClicked;
     
     public MouseHandler() {
@@ -25,16 +25,16 @@ public class MouseHandler {
         leftJustClicked = rightJustClicked = middleJustClicked = false;
     }
     
-    /**
-     * Poll mouse state from Raylib - called once per frame
-     * This replaces the old event-based MouseListener approach
-     */
+    
+
+
+
     public void update() {
-        // Get mouse position from Raylib
+        
         Vector2 mousePos = GetMousePosition();
         position.set(mousePos.x(), mousePos.y());
         
-        // Just clicked this frame (single press)
+        
         leftJustClicked = IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
         rightJustClicked = IsMouseButtonPressed(MOUSE_BUTTON_RIGHT);
         middleJustClicked = IsMouseButtonPressed(MOUSE_BUTTON_MIDDLE);

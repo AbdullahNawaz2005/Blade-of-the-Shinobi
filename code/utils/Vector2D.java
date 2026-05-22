@@ -1,8 +1,8 @@
 package utils;
 
-/**
- * 2D Vector for positions, velocities, and directions
- */
+
+
+
 public class Vector2D {
     public double x;
     public double y;

@@ -1,13 +1,13 @@
 package utils;
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
-import utils.RaylibRenderer; // Rendering utilities
+import static utils.RaylibRenderer.*; 
+import utils.RaylibRenderer; 
 
-import static com.raylib.Raylib.Rectangle; // Imports Rectangle functionality
+import static com.raylib.Raylib.Rectangle; 
 
-/**
- * Platform record for level geometry
- * Uses Raylib Rectangle for collision detection
- */
+
+
+
+
 public class Platform {
     public final int x;
     public final int y;
@@ -21,9 +21,9 @@ public class Platform {
         this.height = height;
     }
     
-    /**
-     * Convert to Raylib Rectangle for collision detection
-     */
+    
+
+
     public Rectangle toRectangle() {
         return rect(x, y, width, height);
     }

@@ -1,12 +1,12 @@
 package game.ui;
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import utils.Constants; // Global game constants
-import utils.UIRenderer; // UI drawing helpers
+import static utils.RaylibRenderer.*; 
+import static com.raylib.Raylib.*; 
+import utils.Constants; 
+import utils.UIRenderer; 
 
-/**
- * Renders the pause menu overlay.
- */
+
+
+
 public class PauseOverlayRenderer {
     public void render(int pauseMenuSelection, float[] pauseCardScales) {
         int screenW = Constants.WINDOW_WIDTH;

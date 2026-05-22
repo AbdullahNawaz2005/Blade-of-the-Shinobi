@@ -1,9 +1,9 @@
 package game.effects;
 
-/**
- * Damage flash effect (red screen edge).
- * Timer is decremented during vignette rendering to match original behavior.
- */
+
+
+
+
 public class DamageFlash {
     private int timer = 0;
     private static final int DURATION = 15;

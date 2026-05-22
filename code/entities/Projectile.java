@@ -1,15 +1,15 @@
 package entities;
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
+import static utils.RaylibRenderer.*; 
 
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import com.raylib.Raylib.Color; // Raylib color struct
-import utils.Constants; // Global game constants
+import static com.raylib.Raylib.*; 
+import com.raylib.Raylib.Color; 
+import utils.Constants; 
 
-/**
- * Simple kunai projectile - small Colors.BLACK throwing knife
- * Also used for enemy arrows (with flaming support)
- * Uses Raylib for rendering
- */
+
+
+
+
+
 public class Projectile {
     
     private double x, y;
@@ -17,7 +17,7 @@ public class Projectile {
     private int damage;
     private boolean facingRight;
     private boolean enemyProjectile;
-    private int[] projectileColor; // [R, G, B]
+    private int[] projectileColor; 
     private boolean flaming = false;
     
     public Projectile(double x, double y, double vx, double vy, int damage) {
@@ -55,15 +55,15 @@ public class Projectile {
         Color mainColor = color(projectileColor[0], projectileColor[1], projectileColor[2], 255);
         
         if (enemyProjectile) {
-            // Arrow style for enemy projectiles
+            
             if (facingRight) {
-                // Arrow shaft
+                
                 DrawRectangle(px - 15, py - 1, 25, 2, mainColor);
-                // Arrow head
+                
                 int[] headX = {px + 10, px + 18, px + 10};
                 int[] headY = {py - 4, py, py + 4};
                 fillPolygon(headX, headY, 3, mainColor);
-                // Fletching
+                
                 Color fletchColor = flaming ? color(255, 100, 0, 255) : color(150, 150, 150, 255);
                 DrawRectangle(px - 18, py - 3, 5, 6, fletchColor);
             } else {
@@ -75,7 +75,7 @@ public class Projectile {
                 DrawRectangle(px + 13, py - 3, 5, 6, fletchColor);
             }
             
-            // Flaming trail
+            
             if (flaming) {
                 for (int i = 0; i < 3; i++) {
                     int trailOffset = facingRight ? -(i * 6 + 8) : (i * 6 + 8);
@@ -85,38 +85,38 @@ public class Projectile {
                 }
             }
         } else {
-            // Simple small Colors.BLACK kunai
+            
             if (facingRight) {
-                // Blade pointing right
+                
                 int[] bladeX = {px, px + 16, px + 22, px + 16, px};
                 int[] bladeY = {py - 2, py - 2, py, py + 2, py + 2};
                 fillPolygon(bladeX, bladeY, 5, mainColor);
                 
-                // Handle
+                
                 DrawRectangle(px - 10, py - 2, 12, 4, mainColor);
                 
-                // Ring
+                
                 Color ringColor = color(40, 40, 45, 255);
                 fillOval(px - 14, py - 3, 6, 6, ringColor);
             } else {
-                // Blade pointing left
+                
                 int[] bladeX = {px, px - 16, px - 22, px - 16, px};
                 int[] bladeY = {py - 2, py - 2, py, py + 2, py + 2};
                 fillPolygon(bladeX, bladeY, 5, mainColor);
                 
-                // Handle
+                
                 DrawRectangle(px - 2, py - 2, 12, 4, mainColor);
                 
-                // Ring
+                
                 Color ringColor = color(40, 40, 45, 255);
                 fillOval(px + 8, py - 3, 6, 6, ringColor);
             }
         }
     }
     
-    /**
-     * Get hitbox as Raylib Rectangle
-     */
+    
+
+
     public Rectangle getHitbox() {
         return rect((float)x - 12, (float)y - 3, 34, 6);
     }

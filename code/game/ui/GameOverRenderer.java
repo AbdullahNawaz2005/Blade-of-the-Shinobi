@@ -1,14 +1,14 @@
 package game.ui;
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
-// Colors accessed via RaylibRenderer (WHITE, BLACK, etc.)
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import utils.Constants; // Global game constants
-import utils.UIRenderer; // UI drawing helpers
-import game.state.GameSession; // Current game state data
+import static utils.RaylibRenderer.*; 
 
-/**
- * Renders the game over overlay, victory screen, and level transition screen.
- */
+import static com.raylib.Raylib.*; 
+import utils.Constants; 
+import utils.UIRenderer; 
+import game.state.GameSession; 
+
+
+
+
 public class GameOverRenderer {
 
     public void renderGameOverOverlay(GameSession session, int highScore, boolean isNewHighScore,

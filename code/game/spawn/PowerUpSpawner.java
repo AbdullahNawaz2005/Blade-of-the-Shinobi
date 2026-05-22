@@ -1,11 +1,11 @@
 package game.spawn;
-import java.util.List; // List interface for collections
-import java.util.Random; // Random number generator
-import powerups.*; // Imports import powerups functionality
+import java.util.List; 
+import java.util.Random; 
+import powerups.*; 
 
-/**
- * Handles power-up spawning from enemy drops.
- */
+
+
+
 public class PowerUpSpawner {
     
     public void spawnPowerUp(double x, double y, List<PowerUp> powerUps, Random random) {

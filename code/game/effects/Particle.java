@@ -1,14 +1,14 @@
 package game.effects;
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
-import utils.Constants; // Global game constants
+import static utils.RaylibRenderer.*; 
+import utils.Constants; 
 
-/**
- * Particle class for death effects
- */
+
+
+
 public class Particle {
     public double x, y, vx, vy;
     public int size;
-    public int[] colorRGB; // [R, G, B]
+    public int[] colorRGB; 
     public int life;
     public int maxLife;
     

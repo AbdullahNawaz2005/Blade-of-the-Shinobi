@@ -1,20 +1,20 @@
 package game.ui;
 
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
-// Colors accessed via RaylibRenderer (WHITE, DARKGRAY, etc.)
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import com.raylib.Raylib.Color; // Raylib color struct
-import java.util.ArrayList; // For dynamic arrays
-import java.util.List; // List interface for collections
-import entities.Player; // Player character
-import input.MouseHandler; // Mouse input handling
-import utils.Constants; // Global game constants
-import game.state.GameSession; // Current game state data
+import static utils.RaylibRenderer.*; 
 
-/**
- * Renders the HUD: health/stamina/combo bars, pause button, kill counter,
- * level progress bar, and active power-up indicators.
- */
+import static com.raylib.Raylib.*; 
+import com.raylib.Raylib.Color; 
+import java.util.ArrayList; 
+import java.util.List; 
+import entities.Player; 
+import input.MouseHandler; 
+import utils.Constants; 
+import game.state.GameSession; 
+
+
+
+
+
 public class HUDRenderer {
     private static final int PAUSE_BTN_X = 20;
     private static final int PAUSE_BTN_Y = 12;
@@ -34,7 +34,7 @@ public class HUDRenderer {
 
     public void renderHUD(Player player, GameSession session, MouseHandler mouse, int enemyCount) {
         utils.UIRenderer.drawHUDPanel(session.score, session.wave, enemyCount);
-        // Pause button
+        
         int btnX = Constants.WINDOW_WIDTH - PAUSE_BTN_X - PAUSE_BTN_SIZE;
         int btnY = PAUSE_BTN_Y;
         boolean hovered = mouse.getX() >= btnX && mouse.getX() <= btnX + PAUSE_BTN_SIZE &&
@@ -59,7 +59,7 @@ public class HUDRenderer {
         fillRoundRect(barX1, barY, barWidth, barHeight, 2, WHITE);
         fillRoundRect(barX2, barY, barWidth, barHeight, 2, WHITE);
 
-        // Health, Stamina, Combo bars
+        
         fillRoundRect(15, 75, 215, 60, Constants.HUD_PANEL_CORNER_RADIUS, color(0, 0, 0, Constants.HUD_PANEL_ALPHA));
         DrawRectangle(20, 80, 200, 20, DARKGRAY);
         double healthPercent = (double) player.getHealth() / Constants.PLAYER_MAX_HEALTH;
@@ -115,12 +115,12 @@ public class HUDRenderer {
             int comboWidth = MeasureText(comboText, comboFontSize);
             DrawText(comboText, (Constants.WINDOW_WIDTH - comboWidth) / 2, 180, comboFontSize, comboTextColor);
         }
-        // Kill counter
+        
         int killFontSize = 16;
         String killText = "Kills: " + session.killCount;
         DrawText("☠", 20, 145, killFontSize + 4, color(200, 50, 50, 255));
         DrawText(killText, 42, 147, killFontSize, WHITE);
-        // Level progress bar
+        
         int progressBarHeight = 6;
         int progressBarY = Constants.WINDOW_HEIGHT - progressBarHeight - 4;
         int progressBarWidth = Constants.WINDOW_WIDTH - 40;
@@ -135,7 +135,7 @@ public class HUDRenderer {
         }
         drawRoundRect(progressBarX - 1, progressBarY - 1, progressBarWidth + 2, progressBarHeight + 2, 2, 1,
                 color(80, 80, 80, 150));
-        // Power-up indicators
+        
         renderPowerUpIndicators(player);
     }
 

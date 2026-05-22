@@ -1,27 +1,27 @@
 package game.ui;
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import com.raylib.Raylib.Color; // Raylib color struct
-import java.util.List; // List interface for collections
-import java.util.Random; // Random number generator
-import entities.Player; // Player character
-import entities.Enemy; // Base enemy class
-import entities.Projectile; // Thrown weapons
-import entities.enemies.Boss; // Boss enemy
-import entities.enemies.ShieldBearer; // Defensive enemy
-import powerups.PowerUp; // Base item class
-import utils.Constants; // Global game constants
-import utils.Platform; // Platform structures
-import utils.RaylibRenderer; // Rendering utilities
-import game.effects.*; // Imports effects functionality
-import game.entities.Crate; // Breakable objects
-import game.state.GameSession; // Current game state data
-import game.state.WaveManager; // Wave spawning logic
+import static utils.RaylibRenderer.*; 
+import static com.raylib.Raylib.*; 
+import com.raylib.Raylib.Color; 
+import java.util.List; 
+import java.util.Random; 
+import entities.Player; 
+import entities.Enemy; 
+import entities.Projectile; 
+import entities.enemies.Boss; 
+import entities.enemies.ShieldBearer; 
+import powerups.PowerUp; 
+import utils.Constants; 
+import utils.Platform; 
+import utils.RaylibRenderer; 
+import game.effects.*; 
+import game.entities.Crate; 
+import game.state.GameSession; 
+import game.state.WaveManager; 
 
-/**
- * Renders the gameplay world: background, battleground, platforms, vignette,
- * entities, particles, and combo effects.
- */
+
+
+
+
 public class GameRenderer {
 
     public void renderPlaying(Player player, List<Enemy> enemies, List<Projectile> projectiles,
@@ -71,8 +71,8 @@ public class GameRenderer {
         int shakeY = RaylibRenderer.getShakeOffsetY();
         DrawRectangleGradientV(shakeX, shakeY, Constants.WINDOW_WIDTH, groundLevel,
             color(10, 15, 35, 255), color(20, 50, 50, 255));
-        // A fixed seed (12345) is used so the star field stays in the same positions every frame.
-        // If a random seed were used here, stars would flicker rapidly - an unpleasant strobing effect.
+        
+        
         Random starRand = new Random(12345);
         for (int i = 0; i < 100; i++) {
             int x = starRand.nextInt(Constants.WINDOW_WIDTH) + shakeX;
@@ -169,8 +169,8 @@ public class GameRenderer {
         int w = Constants.WINDOW_WIDTH; int h = Constants.WINDOW_HEIGHT;
         int shakeX = RaylibRenderer.getShakeOffsetX();
         int shakeY = RaylibRenderer.getShakeOffsetY();
-        // Four gradient strips darken the four screen edges to create a soft vignette frame.
-        // This keeps the player's eye drawn toward the center of the action.
+        
+        
         int vignetteAlpha = Constants.VIGNETTE_ALPHA / 2;
         DrawRectangleGradientV(shakeX, shakeY, w, 100, color(0, 0, 0, vignetteAlpha), color(0, 0, 0, 0));
         DrawRectangleGradientV(shakeX, h - 100 + shakeY, w, 100, color(0, 0, 0, 0), color(0, 0, 0, vignetteAlpha));

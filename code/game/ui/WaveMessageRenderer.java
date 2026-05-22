@@ -1,12 +1,12 @@
 package game.ui;
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import utils.Constants; // Global game constants
-import game.state.WaveManager; // Wave spawning logic
+import static utils.RaylibRenderer.*; 
+import static com.raylib.Raylib.*; 
+import utils.Constants; 
+import game.state.WaveManager; 
 
-/**
- * Renders wave complete messages, wave announcements, and finisher text.
- */
+
+
+
 public class WaveMessageRenderer {
 
     public void renderWaveCompleteMessage(int wave, long waveTransitionStartTime) {

@@ -1,38 +1,38 @@
 package audio;
 
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import java.io.File; // File system operations
-import java.util.HashMap; // Key-value data structure
-import java.util.Map; // Map interface for collections
+import static com.raylib.Raylib.*; 
+import java.io.File; 
+import java.util.HashMap; 
+import java.util.Map; 
 
-/**
- * Manages all game sounds and music using Raylib.
- * Uses null-object pattern: missing files result in silent no-ops.
- * 
- * Sound files should be placed in the 'assets/sounds/' directory:
- *   - background.mp3
- *   - boss_killed.wav
- *   - explosion.wav
- *   - hit_enemy.mp3
- *   - kunai.wav
- *   - menu_select.mp3
- *   - player_dead.wav
- *   - player_hurt.wav
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class SoundManager {
     
     private static SoundManager instance;
     
-    // Sound clips cache
+    
     private Map<String, Sound> soundClips;
     
-    // Background music
+    
     private Music backgroundMusic;
     private boolean musicEnabled = true;
     private boolean soundEnabled = true;
     private boolean startupWarningShown = false;
     
-    // Volume controls (0.0 to 1.0)
+    
     private float musicVolume = 0.2f;
     private float soundVolume = 0.85f;
     
@@ -47,7 +47,7 @@ public class SoundManager {
     public static final String SOUND_MENU_SELECT = "menu_select";
     
     private SoundManager() {
-        InitAudioDevice(); // Initialize Raylib audio
+        InitAudioDevice(); 
         soundClips = new HashMap<>();
         loadAllSounds();
     }
@@ -60,7 +60,7 @@ public class SoundManager {
     }
     
     private void loadAllSounds() {
-        // Load all game sounds - missing files are handled gracefully
+        
         loadSound(SOUND_HIT_ENEMY, SOUNDS_DIR + "hit_enemy.mp3");
         loadSound(SOUND_PLAYER_DEAD, SOUNDS_DIR + "player_dead.wav");
         loadSound(SOUND_PLAYER_HURT, SOUNDS_DIR + "player_hurt.wav");
@@ -69,7 +69,7 @@ public class SoundManager {
         loadSound(SOUND_KUNAI, SOUNDS_DIR + "kunai.wav");
         loadSound(SOUND_MENU_SELECT, SOUNDS_DIR + "menu_select.mp3");
         
-        // Load background music separately
+        
         loadBackgroundMusic(SOUNDS_DIR + "background.mp3");
     }
     
@@ -90,16 +90,16 @@ public class SoundManager {
     private void loadBackgroundMusic(String filepath) {
         File musicFile = new File(filepath);
         if (!musicFile.exists()) {
-            return; // Silent fail - missing music is non-fatal; game runs without audio
+            return; 
         }
         
         backgroundMusic = LoadMusicStream(filepath);
         backgroundMusic.looping(true);
     }
     
-    /**
-     * Play a sound effect once
-     */
+    
+
+
     public void playSound(String soundName) {
         if (!soundEnabled) return;
         
@@ -110,35 +110,35 @@ public class SoundManager {
         }
     }
     
-    /**
-     * Play an effect by filename (for dynamic sound loading).
-     * Strips the file extension before looking up the clip, so callers can pass either
-     * a plain name like "hit_enemy" or a filename like "hit_enemy.wav" interchangeably.
-     */
+    
+
+
+
+
     public void playEffect(String filename) {
         if (!soundEnabled) return;
         
-        // Extract name from filename (e.g., "boss_phase.wav" -> "boss_phase")
+        
         String name = filename.replace(".wav", "").replace(".mp3", "").replace(SOUNDS_DIR, "");
         
-        // Only play if it is one of our loaded sounds
+        
         if (soundClips.containsKey(name)) {
             playSound(name);
         }
     }
     
-    /**
-     * Call this every frame to keep music playing
-     */
+    
+
+
     public void updateMusic() {
         if (musicEnabled && backgroundMusic != null && backgroundMusic.stream() != null) {
             UpdateMusicStream(backgroundMusic);
         }
     }
     
-    /**
-     * Start playing background music
-     */
+    
+
+
     public void startBackgroundMusic() {
         if (!musicEnabled || backgroundMusic == null || backgroundMusic.stream() == null) return;
         
@@ -146,33 +146,33 @@ public class SoundManager {
         PlayMusicStream(backgroundMusic);
     }
     
-    /**
-     * Stop background music
-     */
+    
+
+
     public void stopBackgroundMusic() {
         if (backgroundMusic != null && backgroundMusic.stream() != null && IsMusicStreamPlaying(backgroundMusic)) {
             StopMusicStream(backgroundMusic);
         }
     }
     
-    /**
-     * Pause background music
-     */
+    
+
+
     public void pauseBackgroundMusic() {
         if (backgroundMusic != null && backgroundMusic.stream() != null && IsMusicStreamPlaying(backgroundMusic)) {
             PauseMusicStream(backgroundMusic);
         }
     }
     
-    /**
-     * Resume background music from where it paused
-     */
+    
+
+
     public void resumeBackgroundMusic() {
         if (!musicEnabled || backgroundMusic == null || backgroundMusic.stream() == null) return;
         ResumeMusicStream(backgroundMusic);
     }
     
-    // Volume controls
+    
     public void setMusicVolume(float volume) {
         this.musicVolume = Math.max(0, Math.min(1, volume));
         if (backgroundMusic != null && backgroundMusic.stream() != null) {
@@ -187,7 +187,7 @@ public class SoundManager {
     public float getMusicVolume() { return musicVolume; }
     public float getSoundVolume() { return soundVolume; }
     
-    // Enable/disable
+    
     public void setMusicEnabled(boolean enabled) {
         this.musicEnabled = enabled;
         if (!enabled) {
@@ -202,9 +202,9 @@ public class SoundManager {
     public boolean isMusicEnabled() { return musicEnabled; }
     public boolean isSoundEnabled() { return soundEnabled; }
     
-    /**
-     * Clean up resources
-     */
+    
+
+
     public void cleanup() {
         if (backgroundMusic != null && backgroundMusic.stream() != null) {
             UnloadMusicStream(backgroundMusic);
@@ -215,6 +215,6 @@ public class SoundManager {
             }
         }
         soundClips.clear();
-        CloseAudioDevice(); // Close Raylib audio
+        CloseAudioDevice(); 
     }
 }

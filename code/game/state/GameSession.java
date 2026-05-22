@@ -1,13 +1,13 @@
 package game.state;
-import utils.Constants; // Global game constants
-import utils.Difficulty; // Difficulty settings
+import utils.Constants; 
+import utils.Difficulty; 
 
-/**
- * Mutable game session data: score, wave, killCount, difficulty, and cross-cutting combat state.
- * Used as a shared data bag to avoid excessive parameter passing between systems.
- */
+
+
+
+
 public class GameSession {
-    // Level info
+    
     public int currentLevel = 1;
     public int score = 0;
     public int wave = 0;
@@ -15,26 +15,26 @@ public class GameSession {
     public int bossCount = 0;
     public int killCount = 0;
     
-    // Difficulty
+    
     public Difficulty difficulty = Difficulty.NORMAL;
     
-    // Combo finisher state (shared between CombatSystem and renderers)
+    
     public boolean comboFinisherActive;
     public int comboFinisherFlashTimer;
     public boolean showFinisherText;
     public long finisherTextStartTime;
     
-    // ShieldBearer hint tracking
+    
     public boolean firstShieldBearerKilled = false;
     
-    // Debug flags
+    
     public boolean showHitboxes = false;
     
-    // Boss sound delay
+    
     public boolean bossKilledSoundPending = false;
     public long bossKilledSoundTime = 0;
     
-    // Game Over menu state
+    
     public boolean isNewHighScore = false;
     
     public void reset() {

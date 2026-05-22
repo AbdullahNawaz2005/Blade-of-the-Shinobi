@@ -1,16 +1,16 @@
 package entities.enemies;
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
+import static utils.RaylibRenderer.*; 
 
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import com.raylib.Raylib.Color; // Raylib color struct
-import entities.Enemy; // Base enemy class
-import utils.Constants; // Global game constants
-import utils.RaylibRenderer; // Rendering utilities
+import static com.raylib.Raylib.*; 
+import com.raylib.Raylib.Color; 
+import entities.Enemy; 
+import utils.Constants; 
+import utils.RaylibRenderer; 
 
-/**
- * Basic enemy - rushes at player with melee attacks
- * Uses Raylib for rendering
- */
+
+
+
+
 public class Grunt extends Enemy {
     
     public Grunt(double x, double y) {
@@ -32,10 +32,10 @@ public class Grunt extends Enemy {
         int x = (int) position.x;
         int y = (int) position.y;
         
-        // Calculate alpha for hit flash
+        
         int alpha = hitFlashTimer > 0 ? 178 : 255;
         
-        // Grunt color - brownish
+        
         int[] gruntRGB = {120, 80, 60};
         
         if (knockedBack) {
@@ -46,13 +46,13 @@ public class Grunt extends Enemy {
         
         Color gruntColor = color(gruntRGB[0], gruntRGB[1], gruntRGB[2], alpha);
         
-        // Body
+        
         fillRoundRect(x + 5, y + 18, width - 10, height - 28, 6, gruntColor);
         
-        // Head
+        
         fillOval(x + 6, y, 28, 26, gruntColor);
         
-        // Angry eyebrows
+        
         Color blackColor = color(0, 0, 0, alpha);
         if (facingRight) {
             DrawLine(x + 18, y + 8, x + 28, y + 6, blackColor);
@@ -62,12 +62,12 @@ public class Grunt extends Enemy {
             fillOval(x + 14, y + 10, 6, 4, blackColor);
         }
         
-        // Bandana
+        
         DrawRectangle(x + 3, y + 5, 34, 4, color(100, 50, 50, alpha));
         
-        // Arms
+        
         if (attacking) {
-            // Punch forward
+            
             if (facingRight) {
                 DrawRectangle(x + width - 2, y + 25, 25, 8, gruntColor);
             } else {
@@ -78,18 +78,18 @@ public class Grunt extends Enemy {
             DrawRectangle(x + width - 10, y + 22, 8, 18, gruntColor);
         }
         
-        // Legs
+        
         DrawRectangle(x + 10, y + height - 18, 7, 18, gruntColor);
         DrawRectangle(x + 23, y + height - 18, 7, 18, gruntColor);
         
-        // Colors.WHITE flash overlay if hit
+        
         if (hitFlashTimer > 0) {
             Color whiteFlash = color(255, 255, 255, 150);
             fillRoundRect(x + 5, y + 18, width - 10, height - 28, 6, whiteFlash);
             fillOval(x + 6, y, 28, 26, whiteFlash);
         }
         
-        // Health bar
+        
         renderHealthBar();
     }
 }

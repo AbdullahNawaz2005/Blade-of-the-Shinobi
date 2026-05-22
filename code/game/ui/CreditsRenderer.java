@@ -1,10 +1,10 @@
 package game.ui;
-import static utils.RaylibRenderer.*; // Custom raylib rendering wrappers
-import static com.raylib.Colors.WHITE; // Imports WHITE functionality
-import static com.raylib.Raylib.*; // Jaylib drawing and input functions
-import utils.Constants; // Global game constants
-import utils.UIRenderer; // UI drawing helpers
-import game.effects.CherryPetalManager; // Falling petals effect
+import static utils.RaylibRenderer.*; 
+import static com.raylib.Colors.WHITE; 
+import static com.raylib.Raylib.*; 
+import utils.Constants; 
+import utils.UIRenderer; 
+import game.effects.CherryPetalManager; 
 
 public class CreditsRenderer {
     

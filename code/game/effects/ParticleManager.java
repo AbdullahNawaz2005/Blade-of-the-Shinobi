@@ -1,12 +1,12 @@
 package game.effects;
-import java.util.ArrayList; // For dynamic arrays
-import java.util.List; // List interface for collections
-import java.util.Random; // Random number generator
-import utils.Constants; // Global game constants
+import java.util.ArrayList; 
+import java.util.List; 
+import java.util.Random; 
+import utils.Constants; 
 
-/**
- * Manages particle lifecycle: creation, update, and rendering.
- */
+
+
+
 public class ParticleManager {
     private List<Particle> particles = new ArrayList<>();
     
